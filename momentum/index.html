@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/owfont-regular.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -37,15 +38,15 @@
           </div>
         </div>
         <div class="weather widget-container">
-          <input class="weather__city" type="text" placeholder="[Enter city]">
-          <span class="weather__error-text"></span>
-          <div class="weather__icon"></div>
+          <input class="weather__city js-weather-city" type="text" value="Minsk">
+          <span class="weather__error-text js-weather-error"></span>
           <div class="weather-desc-container">
-            <span class="weather__temperature">11°C</span>
-            <span class="weather__description">scattered clouds</span>
-            <span class="weather__wind">Wind speed: 3 m/s</span>
-            <span class="weather__humidity">Humidity: 75%</span>
+            <span class="weather__temperature js-weather-temperature"></span>
+            <i class="weather__icon owf js-weather-icon"></i>
           </div>
+          <span class="weather__description js-weather-description"></span>
+          <span class="weather__wind js-weather-wind"></span>
+          <span class="weather__humidity js-weather-humidity"></span>
         </div>
       </div>
       <div class="row row--middle">
@@ -184,5 +185,6 @@
     </div>
   </div>
   <script src="scripts/script.js"></script>
+  <script src="scripts/weather.js"></script>
 </body>
 </html>

@@ -48,6 +48,58 @@ body {
   align-items: flex-start;
 }
 
+.weather {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.weather__city {
+  width: 14ch;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  border: 0;
+  border-bottom: 1px solid #ffffff;
+  background-color: transparent;
+}
+
+.weather__city:focus {
+  outline: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+.weather-desc-container {
+ display: flex;
+ align-items: center;
+ column-gap: 10px;
+ height: 30px;
+}
+
+.weather__icon {
+  font-size: 40px;
+  line-height: 40px;
+  color: #ffffff;
+}
+
+.weather__temperature {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.weather__description {
+  text-transform: capitalize;
+}
+
+.weather__error-text {
+  display: none;
+}
+
+.weather__error-text.active {
+  display: block;
+}
+
 .slider__icon {
   position: absolute;
   top: 50%;
