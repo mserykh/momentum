@@ -109,3 +109,23 @@ body {
   color: #ffffff;
   opacity: 0.7;
 }
+
+.pike::after {
+  position: absolute;
+  display: block;
+  height: 0;
+  width: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.pike--bootom-left {
+  bottom: 0;
+  border-top: 7px solid rgba(255, 255, 255, 0.95);
+  left: 22px;
+}
+
+.widget-wrapper {
+  position: absolute;
+  display: none;
+}
