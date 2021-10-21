@@ -44,6 +44,19 @@ function showGreeting() {
   greetingMessage.textContent = greetingText;
 }
 
+function setLocalStorage() {
+  localStorage.setItem('name', nameDisplay.textContent);
+}
+
+function getLocalStorage() {
+if (localStorage.getItem('name')) {
+  nameDisplay.textContent = localStorage.getItem('name');
+  }
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+
 nameDisplay.addEventListener('click', changeName);
 nameInput.addEventListener('blur', displayName);
 
