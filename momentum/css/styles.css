@@ -63,10 +63,10 @@ body {
 }
 
 .row--middle {
-  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 20px;
 }
 
 .time__clock {
@@ -78,18 +78,37 @@ body {
 }
 
 .greeting {
+  display: flex;
   height: 62px;
   font-size: 50px;
 }
 
+.greeting__message {
+  margin-right: 1rem;
+}
+
+.greeting__name.active {
+  display: block;
+}
+
+.greeting__name {
+  display: none;
+}
+
 .greeting__name-input {
-  display: inline;
-  border: 0;
+  display: none;
+  min-width: 5ch;
+  max-width: 20ch;
   font-family: 'Ubuntu', sans-serif;
   font-size: 50px;
   color: #ffffff;
+  border: 0;
   background-color: transparent;
   outline: none;
+}
+
+.greeting__name-input.active {
+  display: flex;
 }
 
 .greeting__name-input:focus {
