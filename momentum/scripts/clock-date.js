@@ -1,19 +1,19 @@
-const time = document.querySelector('.js-time');
-const date = document.querySelector('.js-date');
+const timeDisplay = document.querySelector('.js-time');
+const dateDisplay = document.querySelector('.js-date');
+const date = new Date();
 
 function showTime() {
   const date = new Date();
   const currentTime = date.toLocaleTimeString();
-  time.textContent = currentTime;
+  timeDisplay.textContent = currentTime;
   setTimeout(showTime, 1000);
   showDate();
 }
 
 function showDate() {
-  const DATE = new Date();
   const options = { weekday: 'long', month: 'long', day: 'numeric'};
-  const currentDate = DATE.toLocaleDateString('en-Us', options);
-  date.textContent = currentDate;
+  const currentDate = date.toLocaleDateString('en-Us', options);
+  dateDisplay.textContent = currentDate;
 }
 
 showTime();
