@@ -46,11 +46,15 @@ function showGreeting() {
 
 function setLocalStorage() {
   localStorage.setItem('name', nameDisplay.textContent);
+  localStorage.setItem('city', weatherCity.value);
 }
 
 function getLocalStorage() {
-if (localStorage.getItem('name')) {
-  nameDisplay.textContent = localStorage.getItem('name');
+  if (localStorage.getItem('name')) {
+    nameDisplay.textContent = localStorage.getItem('name');
+  }
+  if (localStorage.getItem('city')) {
+    weatherCity.value = localStorage.getItem('city');
   }
 }
 
