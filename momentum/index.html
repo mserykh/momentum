@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum: Your space to focus</title>
+</head>
+<body>
+  <div class="container">
+    <div class="background"></div>
+    <div class="widgets">
+      <div class="row row--top">
+        <div class="player widget-container">
+          <div class="player__song-title"></div>
+          <div class="player__controls">
+            <button class="player__btn player__btn--back" type="button"></button>
+            <button class="player__btn player__btn--play" type="button"></button>
+            <button class="player__btn player__btn--forward" type="button"></button>
+            <input class="player__progress-bar" type="range">
+            <div class="player__duration-wrapper">
+              <span class="player__timer"></span>
+              <span class="player__duration"></span>
+            </div>
+            <button class="player__btn player__btn--volume" type="button"></button>
+            <input class="player__volume" type="range">
+          </div>
+          <div class="player__list-wrapper">
+            <ul class="player__list">
+              <li class="player__item">Birds</li>
+              <li class="player__item">Sea</li>
+            </ul>
+          </div>
+        </div>
+        <div class="weather widget-container">
+          <input class="weather__city" type="text" placeholder="[Enter city]">
+          <span class="weather__error-text"></span>
+          <div class="weather__icon"></div>
+          <div class="weather-desc-container">
+            <span class="weather__temperature">11°C</span>
+            <span class="weather__description">scattered clouds</span>
+            <span class="weather__wind">Wind speed: 3 m/s</span>
+            <span class="weather__humidity">Humidity: 75%</span>
+          </div>
+        </div>
+      </div>
+      <div class="row row--middle">
+        <div class="slider">
+          <button class="slider__icon slider__icon--back"></button>
+          <button class="slider__icon slider__icon--forward"></button>
+        </div>
+        <div class="time widget-container">
+          <time class="time__clock"></time>
+          <span class="toggle"></span>
+        </div>
+        <div class="date widget-container">
+          <date class="date__text"></date>
+          <span class="toggle"></span>
+        </div>
+        <div class="greeting widget-container">
+          <span class="greeting__message">Good morning,</span>
+          <span class="greeting__name">
+            <input class="greeting__name-input" type="text" placeholder="[Enter your name]">
+          </span>
+          <span class="greeting__punctuation">.</span>
+        </div>
+      </div>
+      <row class="row bottom">
+        <div class="settings widget-container">
+          <div class="settings-widget">
+            <nav class="settngs__nav">
+              <ul class="seetings__nav-list">
+                <li class="seetings__nav-item active">General</li>
+                <li class="seetings__nav-item">Photos</li>
+                <li class="seetings__nav-item">Language</li>
+              </ul>
+            </nav>
+            <div class="settings__view-container">
+              <div class="settings-general">
+                <h3 class="settings__title">General</h3>
+                <p class="settings__desciption">Customize your dashboard</p>
+                <ul class="settings-general__list">
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Player</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Weather</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Todo</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Greeting</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Time</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                  <li class="settings-general__item">
+                    <span class="settings-general__title">Date</span>
+                    <input id="widget-player" class="settings-general__checkbox" type="checkbox">
+                    <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                  </li>
+                </ul>
+              </div>
+              <div class="settings-photos">
+                <h3 class="settings__title">Photos</h3>
+                <p class="settings__desciption">Pick source of inspiring photos</p>
+                <fieldset class="settings-photos__options">
+                  <label for="widget-photos__github" class="settings-photos__option-title">
+                    <input class="settings-photos__option" id="widget-photos__github" type="radio" name="widget-photos">
+                    <span class="settings-photos__option-label">GitHub</span>
+                  </label>
+                  <label for="widget-photos__unsplash" class="settings-photos__option-title">
+                    <input class="settings-photos__option" id="widget-photos__unsplash" type="radio" name="widget-photos">
+                    <span class="settings-photos__option-label">Unsplash</span>
+                  </label>
+                </fieldset>
+              </div>
+              <div class="settings-language">
+                <h3 class="settings__title">Language</h3>
+                <p class="settings__desciption">Pick for your dashboard</p>
+                  <fieldset class="settings-language__options">
+                    <label for="widget-language__english" class="settings-language__option-title">
+                      <input class="settings-language__option" id="widget-language__english" type="radio" name="widget-language">
+                      <span class="settings-language__option-label">English</span>
+                    </label>
+                    <label for="widget-language__russian" class="settings-language__option-title">
+                      <input class="settings-language__option" id="widget-language__russian" type="radio" name="widget-language">
+                      <span class="settings-language__option-label">Russian</span>
+                    </label>
+                  </fieldset>
+              </div>
+            </div>
+          </div>
+          <span class="settings__toggle"></span>
+        </div>
+        <div class="quote widget-container">
+          <button class="quote__update"></button>
+          <span class="quote__text">“Good ideas are always crazy until they’re not.”</span>
+          <span class="quote__author">Larry Page</span>
+        </div>
+        <div class="todo widget-container">
+          <div class="todo-widget">
+            <ul class="todo__list">
+              <li class="todo__item">
+                <label for="">
+                  <input class="todo__checkbox" type="checkbox">
+                </label>
+                <span class="todo__title">Submit the link before deadline</span>
+              </li>
+              <li class="todo__item">
+                <label for="">
+                  <input class="todo__checkbox" type="checkbox">
+                </label>
+                <span class="todo__title">Finish the task</span>
+              </li>
+            </ul>
+            <div class="todo__footer">
+              <input class="todo__add-new" type="text" placeholder="New Todo">
+            </div>
+          </div>
+          <span class="todo__toggle"></span>
+        </div>
+      </row>
+    </div>
+  </div>
+</body>
+</html>
