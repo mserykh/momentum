@@ -70,7 +70,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("../assets/img/bg.png");
+  background-color: #00000030;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
