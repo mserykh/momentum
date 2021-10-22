@@ -291,3 +291,21 @@ li {
   display: none;
 }
 
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  text-align: center;
+}
+
+.quote__text {
+  max-width: 50ch;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.quote__author {
+  min-height: 20px;
+  font-weight: 300;
+}
