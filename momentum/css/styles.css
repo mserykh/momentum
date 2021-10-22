@@ -13,6 +13,13 @@ body {
   color: #ffffff;
 }
 
+button {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
 .container {
   height: 100vh;
   padding: 10px 20px;
@@ -120,7 +127,36 @@ body {
 .slider__icon {
   position: absolute;
   top: 50%;
+  width: 26px;
+  height: 44px;
+  color: #ffffff;
+  opacity: 0.75;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   cursor: pointer;
+}
+
+.slider__icon:hover {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+.slider__icon--back {
+  transform: rotate(180deg) scale(1);
+}
+
+.slider__icon--back:active {
+  transform: rotate(180deg) scale(1.2);
+  transition: transform 0.3s ease-out;
+}
+
+.slider__icon--forward:active {
+  transform: scale(1.2);
+  transition: transform 0.3s ease-out;
+}
+
+.slider__icon::before,
+.slider__icon::after {
+  width: 30px;
 }
 
 .slider__icon--back {
