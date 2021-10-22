@@ -10,6 +10,7 @@ html, body {
 body {
   height: 100%;
   font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
   color: #ffffff;
 }
 
@@ -19,7 +20,7 @@ button {
   color: #ffffff;
   background-color: transparent;
   border: 0;
-  opacity: 0.75;
+  opacity: 0.6;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -213,6 +214,8 @@ li {
 
 .time__clock {
   font-size: 120px;
+  font-weight: 500;
+  letter-spacing: 4px;
 }
 
 .date__text {
@@ -223,6 +226,7 @@ li {
   display: flex;
   height: 62px;
   font-size: 50px;
+  font-weight: 400;
 }
 
 .greeting__message {
@@ -292,6 +296,10 @@ li {
   display: none;
 }
 
+.row--bottom {
+  min-height: 180px;
+}
+
 .quote {
   display: flex;
   flex-direction: column;
@@ -300,13 +308,15 @@ li {
   text-align: center;
 }
 
+.quote__update {
+  margin-top: auto;
+}
+
 .quote__text {
   max-width: 50ch;
   font-size: 22px;
-  font-weight: 300;
 }
 
 .quote__author {
   min-height: 20px;
-  font-weight: 300;
 }
