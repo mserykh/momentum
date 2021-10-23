@@ -11,7 +11,7 @@ async function getQuotes() {
   quotesNumber = data.length;
   getRandomQuote();
   
-  quoteText.textContent = data[randomQuote].text;
+  quoteText.textContent = `"${data[randomQuote].text}"`;
   quoteAuthor.textContent = data[randomQuote].author;
 
 }
