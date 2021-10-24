@@ -451,6 +451,23 @@ li {
   margin-top: auto;
 }
 
+.quote__update:active {
+  transform: scale(1);
+}
+
+.quote__update.active {
+  animation: rotate 0.6s ease-in-out 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .quote__text {
   max-width: 50ch;
   font-size: 22px;

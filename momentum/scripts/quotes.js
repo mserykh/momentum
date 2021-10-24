@@ -20,5 +20,13 @@ function getRandomQuote() {
   randomQuote = Math.floor(Math.random() * quotesNumber + 1);
 }
 
+function rotate() {
+  quoteBtn.classList.add('active');
+}
+
 document.addEventListener('DOMContentLoaded', getQuotes);
 quoteBtn.addEventListener('click', getQuotes);
+quoteBtn.addEventListener('click', rotate);
+quoteBtn.addEventListener('animationend', () => {
+  quoteBtn.classList.remove('active');
+});
