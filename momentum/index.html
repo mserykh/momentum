@@ -19,23 +19,23 @@
     <div class="widgets">
       <div class="row row--top">
         <div class="player widget-container">
-          <div class="player__song-title"></div>
+          <div class="player__song-title js-player-song-title"></div>
           <div class="player__controls">
-            <button class="player__btn player__btn--back icono-previous" type="button"></button>
-            <button class="player__btn player__btn--play icono-play" type="button"></button>
-            <button class="player__btn player__btn--forward icono-next" type="button"></button>
-            <input class="player__progress-bar" type="range">
+            <button class="player__btn player__btn--back icon-previous js-player-btn-back" type="button"></button>
+            <button class="player__btn player__btn--play icon-play  js-player-btn-play" type="button">
+            </button>
+            <button class="player__btn player__btn--forward icon-next js-player-btn-forward" type="button"></button>
+            <input class="player__range player__progress-bar js-player-audio-progress" value="0" min="0" max="100" type="range">
             <div class="player__duration-wrapper">
-              <span class="player__timer"></span>
-              <span class="player__duration"></span>
+              <span class="player__timer js-player-timer">0:00</span>
+              /
+              <span class="player__duration js-player-duration">1:55</span>
             </div>
-            <button class="player__btn player__btn--volume icono-volumeHigh" type="button"></button>
-            <input class="player__volume" type="range">
+            <button class="player__btn player__btn--volume icon-volumeHigh js-player-btn-volume" type="button"></button>
+            <input class="player__range player__volume js-player-volume-progress" min="0" max="100" type="range">
           </div>
           <div class="player__list-wrapper">
-            <ul class="player__list">
-              <li class="player__item">Birds</li>
-              <li class="player__item">Sea</li>
+            <ul class="player__list js-player-list">
             </ul>
           </div>
         </div>
