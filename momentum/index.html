@@ -74,20 +74,20 @@
         </div>
       </div>
       <div class="row row--bottom">
-        <div class="settings widget-container">
+        <div class="settings widget-container js-settings">
           <div class="widget-wrapper pike pike--bootom-left">
             <div class="settings-widget">
-              <nav class="settngs__nav">
+              <!-- <nav class="settngs__nav">
                 <ul class="seetings__nav-list">
                   <li class="seetings__nav-item active">General</li>
                   <li class="seetings__nav-item">Photos</li>
                   <li class="seetings__nav-item">Language</li>
                 </ul>
-              </nav>
+              </nav> -->
               <div class="settings__view-container">
                 <div class="settings-general">
-                  <h3 class="settings__title">General</h3>
-                  <p class="settings__desciption">Customize your dashboard</p>
+                  <h3 class="settings__title title">General</h3>
+                  <p class="settings__desciption desciption">Customize your dashboard</p>
                   <ul class="settings-general__list">
                     <li class="settings-general__item">
                       <span class="settings-general__title">Player</span>
@@ -122,22 +122,35 @@
                   </ul>
                 </div>
                 <div class="settings-photos">
-                  <h3 class="settings__title">Photos</h3>
-                  <p class="settings__desciption">Pick source of inspiring photos</p>
+                  <h3 class="settings__title title">Photos</h3>
+                  <p class="settings__desciption desciption">Pick source of inspiring photos.</p>
+                  <p class="settings__desciption desciption">By deafult photos based on the part of the day. Change theme by typing tags</p>
                   <fieldset class="settings-photos__options">
                     <label for="widget-photos__github" class="settings-photos__option-title">
-                      <input class="settings-photos__option" id="widget-photos__github" type="radio" name="widget-photos">
+                      <input class="settings-photos__option js-settings-photo-source" id="widget-photos__github" value="github" type="radio" name="widget-photos">
                       <span class="settings-photos__option-label">GitHub</span>
                     </label>
                     <label for="widget-photos__unsplash" class="settings-photos__option-title">
-                      <input class="settings-photos__option" id="widget-photos__unsplash" type="radio" name="widget-photos">
+                      <input class="settings-photos__option js-settings-photo-source" id="widget-photos__unsplash" value="unsplash" type="radio" name="widget-photos">
                       <span class="settings-photos__option-label">Unsplash</span>
                     </label>
-                  </fieldset>
+                    <label for="widget-photos__flickr" class="settings-photos__option-title">
+                      <input class="settings-photos__option js-settings-photo-source" id="widget-photos__flickr" value="flickr" type="radio" name="widget-photos">
+                      <span class="settings-photos__option-label">Flickr</span>
+                    </label>
+                    <div class="settings-photos__tag-wrapper js-photos-tags-wrapper">
+                      <label class="settings-photos__tag-label">
+                        <input class="settings-photos__tag-input js-photos-tag-input" type="text" placeholder="Type here">
+                        <span class="settings-photos__error js-photos-tag-error"></span>
+                      </label>
+                      <div class="settings-photos__tag-list js-photos-tag-list">
+                      </div>
+                    </div>
+                    </fieldset>
                 </div>
                 <div class="settings-language">
-                  <h3 class="settings__title">Language</h3>
-                  <p class="settings__desciption">Pick for your dashboard</p>
+                  <h3 class="settings__title title">Language</h3>
+                  <p class="settings__desciption desciption">Pick for your dashboard</p>
                     <fieldset class="settings-language__options">
                       <label for="widget-language__english" class="settings-language__option-title">
                         <input class="settings-language__option" id="widget-language__english" type="radio" name="widget-language">
@@ -152,7 +165,7 @@
               </div>
             </div>
           </div>
-          <button class="settings__toggle icono-gear" type="button"></button>
+          <button class="settings__toggle icono-gear js-settings-toggle" type="button"></button>
         </div>
         <div class="quote widget-container">
           <button class="quote__update icono-sync js-quote-btn"></button>
