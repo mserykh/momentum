@@ -130,7 +130,7 @@ function setProgress() {
   const duration = audio.duration;
   currentTime = duration * audioProgress.value / 100;
   audio.currentTime = currentTime;
-  audioProgress.style.background = `linear-gradient(to right, #0bdbac 0%, #0bdbac ${percent}%, #ffffff ${percent}%)`;
+  audioProgress.style.background = `linear-gradient(to right, #0bdbac 0%, #0bdbac ${audioProgress.value}%, #ffffff ${audioProgress.value}%)`;
   displayReadableTime(currentTime);
 }
 
