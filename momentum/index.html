@@ -172,29 +172,19 @@
           <span class="quote__text js-quote-text"></span>
           <span class="quote__author js-quote-author"></span>
         </div>
-        <div class="todo widget-container">
+        <div class="todo widget-container js-todo">
           <div class="widget-wrapper pike pike--bootom-left">
             <div class="todo-widget">
-              <ul class="todo__list">
-                <li class="todo__item">
-                  <label for="">
-                    <input class="todo__checkbox" type="checkbox">
-                  </label>
-                  <span class="todo__title">Submit the link before deadline</span>
-                </li>
-                <li class="todo__item">
-                  <label for="">
-                    <input class="todo__checkbox" type="checkbox">
-                  </label>
-                  <span class="todo__title">Finish the task</span>
-                </li>
+              <h3 class="todo__heading">Todo</h3>
+              <p class="todo__description">Break your goals into manageable pieces</p>
+              <ul class="todo__list js-todo-list">
               </ul>
               <div class="todo__footer">
-                <input class="todo__add-new" type="text" placeholder="New Todo">
+                <input class="todo__add-new js-todo-btn-add-new" type="text" placeholder="New Todo">
               </div>
             </div>
         </div>
-          <button class="todo__toggle" type="button">Todo</button>
+          <button class="todo__toggle js-todo-toggle" type="button">Todo</button>
         </div>
       </div>
     </div>
@@ -215,6 +205,7 @@
   </div>
   <script src="scripts/script.js"></script>
   <script src="scripts/quotes.js"></script>
+  <script src="scripts/todo.js"></script>
   <script type="module" src="scripts/audioPlayer.js"></script>
 </body>
 </html>
