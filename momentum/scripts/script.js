@@ -12,6 +12,9 @@ const tagList = document.querySelector('.js-photos-tag-list');
 const notValidTagInput = document.querySelector('.js-photos-tag-error');
 const tagsWrapper = document.querySelector('.js-photos-tags-wrapper');
 
+const widgets = document.querySelectorAll('.js-settings-widget-item');
+const widgetContainers = document.querySelectorAll('.js-widget-container');
+
 const date = new Date();
 const hours = date.getHours();
 const timeOfDayList = ['night', 'morning', 'afternoon', 'evening'];
@@ -22,11 +25,45 @@ let state = {
   langauge: 'en',
   photoSource: 'github',
   tags: [timeOfDay],
-  blocks: ['time', 'date', 'greeting', 'quote', 'weather', 'audio', 'todolist'],
+  blocks: [{
+    widget: 'audio',
+    shown: true,
+    },
+    {
+      widget: 'weather',
+      shown: true,
+    },
+    {
+      widget: 'time',
+      shown: true,
+    },
+    {
+      widget: 'date',
+      shown: true,
+    },
+    {
+      widget: 'greeting',
+      shown: true,
+    },
+    {
+      widget: 'quote',
+      shown: true,
+    },
+    {
+      widget: 'todolist',
+      shown: true,
+    },
+  ],
 };
+
+!localStorage.state.blocks ? state.blocks = state.blocks : state.blocks = JSON.parse(localStorage.getItem('state')).blocks;
+
 let photoSourceValue;
 let randomNum;
 let imageURL;
+
+!localStorage.state.photoSource ? photoSourceValue = state.photoSource : photoSourceValue = JSON.parse(localStorage.getItem('state')).photoSource;
+showPhotoSource();
 
 function initMomentum() {
   showTime();
@@ -161,6 +198,7 @@ function toggleTags() {
 function updatePhotoSource(event) {
   photoSourceValue = event.target.value;
   state.photoSource = photoSourceValue;
+  setLocalStorageState();
   toggleTags();
   getImageURL();
   setBg();
@@ -329,6 +367,32 @@ tagInput.addEventListener('keypress', validateTagInput);
 settingsToggle.addEventListener('click', toggleSettingsBtn);
 
 
-deleteTagsBtns.forEach(btn => btn.addEventListener('click', deleteTag));
+deleteTagsBtns.forEach((btn, index) => btn.addEventListener('click', (event) => {
+  deleteTag(event);
+}));
+
+widgets.forEach((widget, index) => {
+  let input = widget.getElementsByTagName('INPUT');
+  const currentState = JSON.parse(localStorage.getItem('state'));
+  input[0].checked = currentState.blocks[index].shown;
+  if (input[0].checked) {
+    widgetContainers[index].classList.remove('disabled');
+  }
+  else {
+    widgetContainers[index].classList.add('disabled');
+  }
+});
+
+widgets.forEach((widget, index) => widget.addEventListener('change', () => {
+  let input = widget.getElementsByTagName('INPUT');
+  state.blocks[index].shown =  input[0].checked;
+  setLocalStorageState();
+  if (input[0].checked) {
+    widgetContainers[index].classList.remove('disabled');
+  }
+  else {
+    widgetContainers[index].classList.add('disabled');
+  }
+}));
 
 initMomentum();

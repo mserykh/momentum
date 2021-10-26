@@ -18,7 +18,7 @@
     <div class="background-shadow"></div>
     <div class="widgets">
       <div class="row row--top">
-        <div class="player widget-container">
+        <div class="player widget-container js-widget-container">
           <div class="player__song-title js-player-song-title"></div>
           <div class="player__controls">
             <button class="player__btn player__btn--back icon-previous js-player-btn-back" type="button"></button>
@@ -39,7 +39,7 @@
             </ul>
           </div>
         </div>
-        <div class="weather widget-container">
+        <div class="weather widget-container js-widget-container">
           <input class="weather__city js-weather-city" type="text" value="Minsk">
           <span class="weather__error-text js-weather-error"></span>
           <div class="weather-desc-container">
@@ -56,15 +56,15 @@
           <button class="slider__icon slider__icon--back icono-caretLeft js-slider-btn-back"></button>
           <button class="slider__icon slider__icon--forward icono-caretRight js-slider-btn-forward"></button>
         </div>
-        <div class="time widget-container">
+        <div class="time widget-container js-widget-container">
           <time class="time__clock js-time"></time>
           <span class="toggle"></span>
         </div>
-        <div class="date widget-container">
+        <div class="date widget-container js-widget-container">
           <date class="date__text js-date"></date>
           <span class="toggle"></span>
         </div>
-        <div class="greeting widget-container">
+        <div class="greeting widget-container js-widget-container">
           <span class="greeting__message js-greeting-message">Good morning, </span>
           <span class="greeting__name js-name-display active"></span>
           <span class="greeting__input-wrapper">
@@ -89,35 +89,40 @@
                   <h3 class="settings__title title">General</h3>
                   <p class="settings__desciption desciption">Customize your dashboard</p>
                   <ul class="settings-general__list">
-                    <li class="settings-general__item">
-                      <span class="settings-general__title">Player</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                    <li class="settings-general__item js-settings-widget-item">
+                      <span class="settings-general__title">Audio</span>
+                      <input id="widget-audio" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-audio"></label>
                     </li>
-                    <li class="settings-general__item">
+                    <li class="settings-general__item js-settings-widget-item">
                       <span class="settings-general__title">Weather</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                      <input id="widget-weather" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-weather"></label>
                     </li>
-                    <li class="settings-general__item">
-                      <span class="settings-general__title">Todo</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
-                    </li>
-                    <li class="settings-general__item">
-                      <span class="settings-general__title">Greeting</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
-                    </li>
-                    <li class="settings-general__item">
+                    <li class="settings-general__item js-settings-widget-item">
                       <span class="settings-general__title">Time</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                      <input id="widget-time" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-time"></label>
                     </li>
-                    <li class="settings-general__item">
+                    <li class="settings-general__item js-settings-widget-item">
                       <span class="settings-general__title">Date</span>
-                      <input id="widget-player" class="settings-general__checkbox" type="checkbox">
-                      <label class="settings-general__checkbox-slider" for="widget-player"></label>
+                      <input id="widget-date" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-date"></label>
+                    </li>
+                    <li class="settings-general__item js-settings-widget-item">
+                      <span class="settings-general__title">Greeting</span>
+                      <input id="widget-greeting" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-greeting"></label>
+                    </li>
+                    <li class="settings-general__item js-settings-widget-item">
+                      <span class="settings-general__title">Quote</span>
+                      <input id="widget-quote" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-quote"></label>
+                    </li>
+                    <li class="settings-general__item js-settings-widget-item">
+                      <span class="settings-general__title">Todo</span>
+                      <input id="widget-todo" class="settings-general__checkbox" type="checkbox">
+                      <label class="settings-general__checkbox-slider" for="widget-todo"></label>
                     </li>
                   </ul>
                 </div>
@@ -167,12 +172,12 @@
           </div>
           <button class="settings__toggle icono-gear js-settings-toggle" type="button"></button>
         </div>
-        <div class="quote widget-container">
+        <div class="quote widget-container js-widget-container">
           <button class="quote__update icono-sync js-quote-btn"></button>
           <span class="quote__text js-quote-text"></span>
           <span class="quote__author js-quote-author"></span>
         </div>
-        <div class="todo widget-container js-todo">
+        <div class="todo widget-container js-todo js-widget-container">
           <div class="widget-wrapper pike pike--bootom-left">
             <div class="todo-widget">
               <h3 class="todo__heading">Todo</h3>

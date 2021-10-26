@@ -89,6 +89,16 @@ li {
   z-index: 3;
 }
 
+.widget-container {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.widget-container.disabled {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -643,6 +653,10 @@ fieldset {
 .settings-photos__tag.hover {
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
+}
+
+.settings-general__checkbox {
+  accent-color: #0bdbac;
 }
 
 .icono-cross {
