@@ -1,4 +1,3 @@
-
 const timeDisplay = document.querySelector('.js-time');
 const dateDisplay = document.querySelector('.js-date');
 const nameDisplay = document.querySelector('.js-name-display');
@@ -13,42 +12,6 @@ const tagList = document.querySelector('.js-photos-tag-list');
 const notValidTagInput = document.querySelector('.js-photos-tag-error');
 const tagsWrapper = document.querySelector('.js-photos-tags-wrapper');
 
-function createTag() {
-  const tagTemplate = document.createElement('span');
-  tagTemplate.classList.add('settings-photos__tag');
-  tagTemplate.classList.add('js-photos-tag');
-  tagTemplate.innerHTML = `
-    ${tagInput.value}
-    <span class="icono-cross js-btn-delete-tag"></span>
-  `;
-  tagList.appendChild(tagTemplate);
-}
-
-function onlyAlphabets() {
-  const regex = /^[a-zA-Z-]{0,20}$/g;
-  if (regex.test(tagInput.value)) {
-    return true;
-  } else {
-      return false;
-  }
-}
-
-function validateTagInput(event) {
-  if ((event.which === 13) && (tagInput.value !== '')) {
-    if (onlyAlphabets()) {
-      notValidTagInput.textContent = '';
-      tagInput.classList.remove('error');
-      createTag();
-      tagInput.value = '';
-    }
-    else {
-      tagInput.value = '';
-      tagInput.classList.add('error');
-      notValidTagInput.textContent = 'Please enter only latin letters';
-    }
-  }
-}
-
 const date = new Date();
 const hours = date.getHours();
 const timeOfDayList = ['night', 'morning', 'afternoon', 'evening'];
@@ -61,10 +24,8 @@ let state = {
   tags: [timeOfDay],
   blocks: ['time', 'date', 'greeting', 'quote', 'weather', 'audio', 'todolist'],
 };
-
 let photoSourceValue;
 let randomNum;
-
 let imageURL;
 
 function initMomentum() {
@@ -72,15 +33,16 @@ function initMomentum() {
   displayName();
   showGreeting();
   getRandomNum();
-  loadSettings();
   showPhotoSource();
   getImageURL();
   setBg();
+  toggleTags();
+  showTagsFromStorage();
 }
 
 function showTime() {
   const date = new Date();
-  const currentTime = date.toLocaleTimeString();
+  const currentTime = date.toLocaleTimeString('nl-NL');
   timeDisplay.textContent = currentTime;
   showDate();
   getTimeOfDay();
@@ -114,22 +76,44 @@ function showGreeting() {
   greetingMessage.textContent = greetingText;
 }
 
-function setLocalStorage() {
+function setLocalStorageName() {
   localStorage.setItem('name', nameDisplay.textContent);
-  //localStorage.setItem('city', weatherCity.value);
-  localStorage.setItem('state', JSON.stringify(state));
 }
 
-function getLocalStorage() {
+function setLocalStorageCity() {
+  //localStorage.setItem('city', weatherCity.value);
+}
+
+function getLocalStorageName() {
   if (localStorage.getItem('name')) {
     nameDisplay.textContent = localStorage.getItem('name');
   }
-  if (localStorage.getItem('city')) {
-    weatherCity.value = localStorage.getItem('city');
-  }
+}
 
-  if (localStorage.getItem('sstate')) {
+function getLocalStorageCity() {
+    /*if (localStorage.getItem('city')) {
+    weatherCity.value = localStorage.getItem('city');
+  }*/
+}
+
+function setLocalStorageState() {
+  localStorage.setItem('state', JSON.stringify(state));
+}
+
+function getLocalStorageState() {
+  if (localStorage.getItem('state')) {
     loadSettings();
+  }
+}
+
+function loadSettings() {
+  let stateStoraged = localStorage.getItem('state');
+  if (stateStoraged) {
+    stateStoraged = JSON.parse(stateStoraged);
+    state = stateStoraged;
+  } else {
+    console.log('localStorage is empty');
+    return;
   }
 }
 
@@ -203,10 +187,6 @@ function getImageURL() {
   }
 }
 
-function toggleTagsList() {
-
-}
-
 function getBgTags() {
   if (state.photoSource === 'github') {
     state.tag = timeOfDay;
@@ -227,7 +207,7 @@ function getGithubImageURL() {
 
 async function getUnsplashImageURL() {
   const id = 'Vz1-I5AoZiCDjHGp7-V_okdCYHTZ9iBS7DUi6xouBA4';
-  const url = `https://api.unsplash.com/photos/random?lang=en&orientation=landscape&query=${timeOfDay}&client_id=${id}`;
+  const url = `https://api.unsplash.com/photos/random?lang=en&orientation=landscape&query=${state.tags}&client_id=${id}`;
   const res = await fetch(url);
   const data = await res.json();
   imageURL = data.urls.regular;
@@ -236,7 +216,7 @@ async function getUnsplashImageURL() {
 
 async function getFlickrImageURL() {
   const id = 'a41d8c521faf913ff1db9fcdc7eb372c';
-  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${id}&tags=${timeOfDay}&extras=url_h&format=json&nojsoncallback=1`;
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${id}&tags=evening&extras=url_h&format=json&nojsoncallback=1`;
   const res = await fetch(url);
   const data = await res.json();
   const photos = data.photos.photo;
@@ -245,25 +225,11 @@ async function getFlickrImageURL() {
   setBg();
  }
 
-window.addEventListener('beforeunload', setLocalStorage);
-window.addEventListener('load', getLocalStorage);
-
-nameDisplay.addEventListener('click', changeName);
-nameInput.addEventListener('blur', displayName);
-
-sliderBtnBack.addEventListener('click', getSlidePrev);
-sliderBtnForward.addEventListener('click', getSlideNext);
-
-photoSources.forEach(radio => radio.addEventListener('change', updatePhotoSource));
-tagInput.addEventListener('keypress', validateTagInput);
-
-initMomentum();
-
 /* Settings */
 const settings = document.querySelector('.js-settings');
 const settingsToggle = document.querySelector('.js-settings-toggle');
 
-function toggleSettings() {
+function toggleSettingsBtn() {
   if (!settings.classList.contains('active')) {
     settings.classList.add('active');
     settingsToggle.classList.add('active');
@@ -274,14 +240,97 @@ function toggleSettings() {
   }
 }
 
-function loadSettings() {
-  const stateStoraged = localStorage.getItem('state');
-  if (stateStoraged) {
-    state = JSON.parse(stateStoraged);
+function createTag() {
+  const tagTemplate = document.createElement('span');
+  tagTemplate.classList.add('settings-photos__tag');
+  tagTemplate.classList.add('js-photos-tag');
+  tagTemplate.innerHTML = `
+    ${tagInput.value}
+    <span class="icono-cross js-btn-delete-tag"></span>
+  `;
+  tagList.appendChild(tagTemplate);
+  setTags(tagTemplate);
+}
+
+const deleteTagsBtns = document.querySelectorAll('.js-btn-delete-tag');
+
+function showTagsFromStorage() {
+  loadSettings();
+  const storedState = state.tags;
+  console.log(state.tags);
+  storedState.forEach(tag => {
+    const tagTemplate = document.createElement('span');
+    tagTemplate.classList.add('settings-photos__tag');
+    tagTemplate.classList.add('js-photos-tag');
+    tagTemplate.innerHTML = `
+      ${tag}
+      <span class="icono-cross js-btn-delete-tag"></span>
+    `;
+    tagList.appendChild(tagTemplate);
+  });
+}
+
+const tags = document.querySelectorAll('.js-photos-tag');
+
+
+
+function setTags(element) {
+  if (state.tags === timeOfDay) {
+    state.tags = [];
+  }
+  state.tags.push(element.textContent.trim());
+  setLocalStorageState();
+}
+
+function deleteTag(event) {
+  const indexFirst = Array.from(state.tags).indexOf(event.target.textContent);
+  state.tags = Array.from(state.tags).filter((f, index) => index !== indexFirst);
+  event.target.parentNode.remove();
+  setLocalStorageState();
+}
+
+function onlyAlphabets() {
+  const regex = /^[a-zA-Z-]{0,20}$/g;
+  if (regex.test(tagInput.value)) {
+    return true;
   } else {
-    console.log('localStorage is empty');
-    return;
+      return false;
   }
 }
 
-settingsToggle.addEventListener('click', toggleSettings);
+function validateTagInput(event) {
+  if ((event.which === 13) && (tagInput.value !== '')) {
+    if (onlyAlphabets()) {
+      notValidTagInput.textContent = '';
+      tagInput.classList.remove('error');
+      createTag();
+      tagInput.value = '';
+    }
+    else {
+      tagInput.value = '';
+      tagInput.classList.add('error');
+      notValidTagInput.textContent = 'Please enter only latin letters';
+    }
+  }
+}
+
+window.addEventListener('beforeunload', setLocalStorageName);
+window.addEventListener('load', getLocalStorageName);
+
+window.addEventListener('beforeunload', setLocalStorageState);
+window.addEventListener('load', getLocalStorageState);
+
+nameDisplay.addEventListener('click', changeName);
+nameInput.addEventListener('blur', displayName);
+
+sliderBtnBack.addEventListener('click', getSlidePrev);
+sliderBtnForward.addEventListener('click', getSlideNext);
+
+photoSources.forEach(radio => radio.addEventListener('change', updatePhotoSource));
+tagInput.addEventListener('keypress', validateTagInput);
+settingsToggle.addEventListener('click', toggleSettingsBtn);
+
+
+deleteTagsBtns.forEach(btn => btn.addEventListener('click', deleteTag));
+
+initMomentum();
