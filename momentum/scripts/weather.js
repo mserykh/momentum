@@ -38,6 +38,7 @@ function setCity(event) {
   if (event.code === 'Enter' || event.type === 'blur') {
     getWeather();
     weatherCity.blur();
+    setLocalStorageCity();
   }
 }
 
@@ -55,4 +56,4 @@ function showError(data) {
 document.addEventListener('DOMContentLoaded', getWeather);
 weatherCity.addEventListener('keypress', setCity);
 weatherCity.addEventListener('blur', setCity);
-getLocalStorage();
+getLocalStorageCity();

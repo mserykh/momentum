@@ -81,7 +81,7 @@ function setLocalStorageName() {
 }
 
 function setLocalStorageCity() {
-  //localStorage.setItem('city', weatherCity.value);
+  localStorage.setItem('city', weatherCity.value);
 }
 
 function getLocalStorageName() {
@@ -91,9 +91,9 @@ function getLocalStorageName() {
 }
 
 function getLocalStorageCity() {
-    /*if (localStorage.getItem('city')) {
+    if (localStorage.getItem('city')) {
     weatherCity.value = localStorage.getItem('city');
-  }*/
+  }
 }
 
 function setLocalStorageState() {
@@ -257,7 +257,7 @@ const deleteTagsBtns = document.querySelectorAll('.js-btn-delete-tag');
 function showTagsFromStorage() {
   loadSettings();
   const storedState = state.tags;
-  console.log(state.tags);
+
   storedState.forEach(tag => {
     const tagTemplate = document.createElement('span');
     tagTemplate.classList.add('settings-photos__tag');
