@@ -7,14 +7,11 @@ const wind = document.querySelector('.js-weather-wind');
 const humidity = document.querySelector('.js-weather-humidity');
 const errorText = document.querySelector('.js-weather-error');
 
-
-
 async function getWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity.value}&lang=${lang}&appid=a62c4f8dcdfc543418fe150124bb12e5&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
   if (data.cod === 200) {
     weatherIcon.className = 'weather__icon owf js-weather-icon';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);

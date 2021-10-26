@@ -272,8 +272,6 @@ function showTagsFromStorage() {
 
 const tags = document.querySelectorAll('.js-photos-tag');
 
-
-
 function setTags(element) {
   if (state.tags === timeOfDay) {
     state.tags = [];
