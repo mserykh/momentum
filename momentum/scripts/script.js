@@ -206,21 +206,23 @@ function updatePhotoSource(event) {
 
 function showPhotoSource() {
   photoSources.forEach(radio => {
-    if (radio.value === state.photoSource) {
+    if (radio.value === JSON.parse(localStorage.getItem('state')).photoSource) {
       radio.checked = true;
-      photoSourceValue = state.photoSource;
+      photoSourceValue = JSON.parse(localStorage.getItem('state')).photoSource;
     }
   });
+
 }
 
 function getImageURL() {
-  if (state.photoSource === 'github') {
+
+  if (JSON.parse(localStorage.getItem('state')).photoSource === 'github') {
     imageURL = getGithubImageURL();
   }
-  else if (state.photoSource === 'unsplash') {
+  else if (JSON.parse(localStorage.getItem('state')).photoSource === 'unsplash') {
     imageURL = getUnsplashImageURL().then(data => data);
   }
-  else if (state.photoSource === 'flickr') {
+  else if (JSON.parse(localStorage.getItem('state')).photoSource === 'flickr') {
     imageURL = getFlickrImageURL().then(data => data);
   }
 }
@@ -244,7 +246,7 @@ function getGithubImageURL() {
 }
 
 async function getUnsplashImageURL() {
-  const id = 'Vz1-I5AoZiCDjHGp7-V_okdCYHTZ9iBS7DUi6xouBA4';
+  const id = 'KA5584RoSQAT-QsN1d_F4t5KHuorqG0z3VmqDfL6JaE';
   const url = `https://api.unsplash.com/photos/random?lang=en&orientation=landscape&query=${state.tags}&client_id=${id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -254,7 +256,7 @@ async function getUnsplashImageURL() {
 
 async function getFlickrImageURL() {
   const id = 'a41d8c521faf913ff1db9fcdc7eb372c';
-  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${id}&tags=evening&extras=url_h&format=json&nojsoncallback=1`;
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${id}&tags=${state.tags}&extras=url_h&format=json&nojsoncallback=1`;
   const res = await fetch(url);
   const data = await res.json();
   const photos = data.photos.photo;
@@ -294,7 +296,7 @@ const deleteTagsBtns = document.querySelectorAll('.js-btn-delete-tag');
 
 function showTagsFromStorage() {
   loadSettings();
-  const storedState = state.tags;
+  let storedState = state.tags;
 
   storedState.forEach(tag => {
     const tagTemplate = document.createElement('span');
