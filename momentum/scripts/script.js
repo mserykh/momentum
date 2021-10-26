@@ -56,6 +56,10 @@ let state = {
   ],
 };
 
+if (!localStorage.state) {
+  setLocalStorageState();
+}
+
 !localStorage.state ? state.blocks = state.blocks : state.blocks = JSON.parse(localStorage.getItem('state')).blocks;
 
 let photoSourceValue;
