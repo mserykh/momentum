@@ -49,7 +49,6 @@ const setLocalStorageTodoIsOpen = () => {
 
 const openTodolist = () => {
   if (todoIsOpen === 'true') {
-    console.log(todoIsOpen);
     todoWidget.classList.add('active');
     toggleTodoBtn.classList.add('active');
   }
