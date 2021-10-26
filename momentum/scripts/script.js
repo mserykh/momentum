@@ -56,13 +56,13 @@ let state = {
   ],
 };
 
-!localStorage.state.blocks ? state.blocks = state.blocks : state.blocks = JSON.parse(localStorage.getItem('state')).blocks;
+!localStorage.state ? state.blocks = state.blocks : state.blocks = JSON.parse(localStorage.getItem('state')).blocks;
 
 let photoSourceValue;
 let randomNum;
 let imageURL;
 
-!localStorage.state.photoSource ? photoSourceValue = state.photoSource : photoSourceValue = JSON.parse(localStorage.getItem('state')).photoSource;
+!localStorage.state ? photoSourceValue = state.photoSource : photoSourceValue = JSON.parse(localStorage.getItem('state')).photoSource;
 showPhotoSource();
 
 function initMomentum() {
